@@ -1,0 +1,180 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Techmentor【テックメンター】</title>
+    <link rel="shortcut icon" href="{% static 'img/common/532108815_fav.ico' %}">
+    <meta name="keywords" content="コワークプレイス,CoworkPlace,コワーキングスペース">
+    <meta name="description" content="コワーキングスペースを探すなら「コワークプレイス」。デザイン、エンジニアなどの職種毎などから今求めているコワーキングスペース探しに対応します。">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!--<meta property="og:title" content="コワーキング・イベントスペース予約サイト | CoworkPlace(コワークプレイス)">-->
+    <!--<meta property="og:type" content="article">-->
+    <!--<meta property="og:description" content="コワーキングスペースを探すなら「コワークプレイス」。デザイン、エンジニアなどの職種毎などから今求めているコワーキングスペース探しに対応します。">-->
+    <!--<meta property="og:url" content="http://coworkplace.jp/">-->
+    <!--<meta property="og:image" content="http://coworkplace.jp/img/common/ogp.jpg">-->
+    <!--<meta property="og:site_name" content="CoworkPlace(コワークプレイス)">-->
+
+
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% block css %}{% endblock %}">
+	{% block secondcss %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/reveal.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.reveal.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/tinymce/tinymce.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/tinymce/config.js' %}"></script>
+
+</head>
+<body>
+	<div id="myModal" class="reveal-modal">
+		<h1 class="taC">ログイン／新規会員登録</h1>
+		<ul class="social-login">
+			<li>
+				<a href="{% url 'social:begin' 'facebook' %}?next={{request.path}}" class="btn lg fb">
+					<i class="fa fa-facebook"></i><span>Facebookでログイン／登録</span>
+				</a>
+			</li>
+			<li>
+				<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="btn lg tw">
+					<i class="fa fa-twitter"></i><span>Twitterでログイン／登録</span>
+				</a>
+			</li>
+			<li>
+				<a href="" class="btn lg git">
+					<i class="fa fa-google-plus"></i><span>Googleでログイン／登録</span>
+				</a>
+			</li>
+			<!--<li>-->
+				<!--<div class="btn lg mail" data-modal="switch">-->
+					<!--<i class="fa fa-envelope"></i><span>メールアドレスでログイン</span>-->
+				<!--</div>-->
+			<!--</li>-->
+		</ul>
+	</div>
+	<header id="header" class="clearfix">
+		<div class="container">
+			<div class="flL">
+				<h1 id="logo"><a href="/">Techmentor</a></h1>
+				<nav id="g-nav">
+					<ul>
+						<li><a href="{% url 'techmentorapp:mentor_list' %}">メンターを探す</a></li>
+						<!--<li><a href="">使い方</a></li>-->
+						<!--<li><a href="">Techmentorになる</a></li>-->
+						<li>
+							<form class="navbar-form navbar-left" role="search" method="GET" action="/search/">
+								<div class="form-group">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="キーワード" name="title">
+										<span class="input-group-btn">
+											<button class="btn btn-success">Find</button>
+										</span>
+									</div>
+								</div>
+							</form>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<div class="flR">
+				<ul id="signup" class="nav navbar-nav">
+					{% if user and not user.is_anonymous %}
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+							   role="button" area-haspopup="true" area-expanded="false">
+								<img src="{% if user.profile %}{% if user.profile.avatar %}{{ user.profile.avatar }}{% else %}/media/{{ user.profile.photo }}{% endif %}{% else %}{% static 'img/common/icon.png' %}{% endif %}" class="img-circle" height="22" width="22">&nbsp;
+								{{ user.profile.name|default:user.username }} <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="{% url 'techmentorapp:edit_profile' %}">プロフィール</a></li>
+								<li role="separator" class="divider"></li>
+								{% if user.mentor %}
+									<li><a href="{% url 'techmentorapp:edit_mentor' %}">メンター設定</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="{% url 'techmentorapp:my_skills' %}">スキル設定</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="{% url 'techmentorapp:my_schedule' %}">スケジュール</a></li>
+									<li role="separator" class="divider"></li>
+								{% endif %}
+								<li><a href="{% url 'auth:logout' %}?next={{request.path}}">ログアウト</a></li>
+							</ul>
+						</li>
+					{% else %}
+						<li><a href="#" data-reveal-id="myModal">ログイン・新規会員登録</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div id="category">
+		<div class="container">
+			<ul class="nav navbar-nav">
+				<li><a href="/category/html-css">HTML & CSS</a></li>
+				<li><a href="/category/javascript">JavaScript</a></li>
+				<li><a href="/category/php">PHP</a></li>
+				<li><a href="/category/ruby-on-rails">Ruby on Rails</a></li>
+				<li><a href="/category/python">Python</a></li>
+			</ul>
+		</div>
+	</div>
+
+{% block page %}
+
+{% endblock %}
+
+	<footer id="footer">
+		<div id="footerInner">
+			<div class="flL sp-clearfix">
+				<ul class="footer-menu">
+					<li>
+						<p class="title">人気のカテゴリー</p>
+						<div class="disc">
+							<p class=""><a href="">php</a></p>
+							<p class=""><a href="">javascript</a></p>
+							<p class=""><a href="">Ruby</a></p>
+							<p class=""><a href="">Python</a></p>
+						</div>
+					</li>
+					<li>
+						<p class="title">Techmentorについて</p>
+						<div class="disc">
+							<p class=""><a href="">ご利用ガイド</a></p>
+							<p class=""><a href="">よくある質問</a></p>
+							<p class=""><a href="">お問い合わせ</a></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<!--<div class="flR ajax-post">-->
+				<!--<form action="/opinion/" class="mailform" id="OpinionIndexForm" method="post" accept-charset="utf-8">-->
+
+					<!--<div class="controls">-->
+						<!--<textarea name="opinion" placeholder="Techmentorについてご意見お聞かせください" cols="30" rows="6" id="OpinionBody"></textarea>-->
+					<!--</div>-->
+					<!--<button id="a_submit" class="btnSubmit">送信</button>-->
+				<!--</form>-->
+
+				<!--<div class="boxContact">-->
+					<!--<p id="opinion-result"></p>-->
+		            <!--<p>頂いたご意見への回答は行っておりません。</p>-->
+		            <!--<p><a href="/contact/">返信の必要なお問い合わせはこちら</a></p>-->
+		        <!--</div>-->
+	        <!--</div>-->
+		</div>
+		<div class="container">
+			<span>Techmentor &copy; 2016</span>
+		</div>
+	</footer>
+</body>
+</html>
+

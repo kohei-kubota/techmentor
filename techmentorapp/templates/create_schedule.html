@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+	{% static 'css/mentor.css' %}
+{% endblock %}
+
+{% block page %}
+    {% if error %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Warning!</strong> {{ error }}
+        </div>
+    {% elif success %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <div class="container">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>success：</strong> {{ success }}
+            </div>
+        </div>
+    {% endif %}
+    <div id="customize-container">
+        <div id="customize-contents">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4 class="edit-title">スケジュール編集</h4>
+                    <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                日時
+                            </label>
+                             <div class="col-sm-10">
+                                 <p class="form-control"><span id="date">{{ date }}</span> <span id="time">{{ time }}</span></p>
+                                 <input type="hidden" value="" class="form-control" name="date" id="date-val">
+                                 <input type="hidden" value="" class="form-control" name="time" id="time-val">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                STATUS
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="status" class="form-control">
+                                    <option value="1">Active</option>
+                                    <option value="">Disabled</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">更新</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var date = $("#date").text();
+        date = date.replace("['" , "");
+        date = date.replace("']" , "");
+        $("#date").text(date);
+        $("#date-val").val(date);
+
+
+        var time = $("#time").text();
+        time = time.replace("['" , "");
+        time = time.replace("']" , "");
+        $("#time").text(time);
+        $("#time-val").val(time);
+    </script>
+{% endblock %}

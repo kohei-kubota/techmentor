@@ -1,0 +1,277 @@
+@charset "UTF-8";
+/* CSS Document */
+.flL {
+  float: left;
+}
+
+.flR {
+  float: right;
+}
+
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.v-middle {
+  vertical-align: middle;
+}
+
+.v-bottom {
+  vertical-align: bottom;
+}
+
+.taR {
+  text-align: right;
+}
+
+.taC {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+body, input, button {
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+input:focus {
+  outline: 0px none black;
+}
+
+select, button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/*--------------------------------------------------------------------
+  ヘッダー
+--------------------------------------------------------------------*/
+#header {
+  height: 50px;
+  background-color: #073648;
+}
+#header #logo {
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+#header #logo a {
+  color: #fff;
+  line-height: 50px;
+  padding: 0 15px 0 20px;
+}
+#header #g-nav {
+  overflow: hidden;
+}
+#header #g-nav li {
+  float: left;
+  display: inline-block;
+}
+#header #g-nav li a {
+  padding: 11px 15px;
+  margin: 0 5px;
+  line-height: 50px;
+  color: #ddd;
+  font-size: 14px;
+}
+#header #g-nav li a:hover {
+  color: #fff;
+}
+#header #signup li {
+  /* float: left; */
+}
+#header #signup li a {
+  padding: 11px 15px;
+  /* margin: 0 5px; */
+  line-height: 28px;
+  color: #ddd;
+  font-size: 14px;
+  min-width: 160px;
+}
+#header #signup li a:hover {
+  color: #337ab7;
+}
+#header #signup .dropdown-menu li a {
+  line-height: 1.42857143;
+  padding: 3px 20px!important;
+  color: #333;
+}
+#header #signup .li a:hover {
+  color: #fff;
+}
+.navbar-nav>li>.dropdown-menu {
+  /* margin-right: 20px!important; */
+}
+
+.social-login {
+    margin-top: 30px;
+}
+.social-login li {
+    margin-bottom: 15px;
+}
+.social-login .btn.lg {
+    width: 100%;
+    height: 40px;
+    line-height: 28px;
+    font-size: 14px;
+    text-align: center;
+    padding-left: 3pc;
+    border-radius: 2px;
+    box-shadow: none;
+    color: #fff;
+}
+.social-login .btn.lg .fa-envelope, .social-login .btn.lg .fa-facebook, .social-login .btn.lg .fa-twitter {
+    font-size: 22px;
+}
+.social-login .btn.lg i {
+    line-height: inherit;
+    color: #fff;
+    width: 30px;
+    float: left;
+    text-align: center;
+    margin-right: 0;
+}
+.social-login .btn.lg>span {
+    width: auto;
+    float: left;
+    padding-left: 10px;
+}
+.social-login .btn:hover {
+    opacity: .8;
+}
+.social-login .btn.fb {
+    background-color: #7490c3;
+}
+.social-login .btn.tw {
+    background-color: #70aecd;
+}
+.social-login .btn.git {
+    background-color: #5a7285;
+}
+
+
+/*--------------------------------------------------------------------
+  フッター
+--------------------------------------------------------------------*/
+#footer {
+  background: #333;
+}
+#footer #footerInner {
+  width: 1170px;
+  margin: 0 auto;
+  padding: 40px 0;
+  overflow: hidden;
+}
+@media screen and (max-width: 640px) {
+  #footer #footerInner .sp-clearfix {
+    float: none;
+  }
+}
+#footer #footerInner .footer-menu li {
+  float: left;
+  margin-left: 50px;
+}
+#footer #footerInner .footer-menu li .title {
+  color: #666;
+  margin-bottom: 20px;
+}
+#footer #footerInner .footer-menu li a {
+  color: #ddd;
+  line-height: 1.9;
+}
+#footer #footerInner .footer-menu li a:hover {
+  color: #fff;
+}
+#footer #footerInner .footer-menu li:first-child {
+  margin-left: 0;
+}
+@media screen and (max-width: 640px) {
+  #footer .ajax-post {
+    display: none;
+  }
+}
+#footer textarea {
+  width: 320px;
+  height: 98px;
+  margin: 0 0 6px;
+  padding: 10px;
+  background: #fcfcfc;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #333;
+  resize: vertical;
+  box-sizing: border-box;
+}
+#footer .boxContact {
+  margin-top: 20px;
+}
+#footer .boxContact p {
+  color: #fff;
+  text-align: right;
+  font-size: 12px;
+  margin-top: 10px;
+}
+#footer .boxContact p a {
+  color: #cfcfcf;
+  font-size: 14px;
+  text-decoration: none;
+}
+#footer .boxContact p a:hover {
+  color: #fff;
+}
+#footer .btnSubmit {
+  text-align: center;
+  background-color: #aaa;
+  color: #000;
+  display: block;
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 0;
+  width: 100%;
+  cursor: pointer;
+}
+#footer .btnSubmit:hover {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  text-decoration: none;
+}
+#footer .footerCopy {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 0 20px;
+}
+@media screen and (max-width: 640px) {
+  #footer .footerCopy {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+  }
+}
+#footer .footerCopy .copyright {
+  font-size: 10px;
+  margin-top: 7px;
+  color: #fff;
+}
+
+#footer .container {
+  border-top: 1px solid rgba(255,255,255,0.05);
+    -webkit-box-shadow: 0 -1px 0 rgba(0,0,0,0.15) inset;
+    box-shadow: 0 -1px 0 rgba(0,0,0,0.15) inset;
+    padding-top: 30px;
+  color: #fff
+}
+
+/*# sourceMappingURL=common.css.map */

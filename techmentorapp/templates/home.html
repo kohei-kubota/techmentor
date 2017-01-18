@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+	{% static 'css/style.css' %}
+{% endblock %}
+
+{% block page %}
+	<div id="main-background">
+		<div class="main-inner">
+			<div class="main-content">
+				<h2>専門家に聞いてみよう</h2>
+				<p>
+					専門家のメンターがあなたの開発をサポートします。
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="customize-container">
+		<ul class="customize-inner">
+			<li>
+				<div class="taC infoIcon"><i class="fa fa-users" aria-hidden="true"></i></div>
+				<div class="disc">
+					<p class="taC name">
+						メンターのクオリティ
+					</p>
+					<p class="taC">
+						Techmentorは一定の審査基準を設けており、クオリティの保証をしています。
+					</p>
+				</div>
+			</li>
+			<li>
+				<div class="taC infoIcon"><i class="fa fa-check-square-o" aria-hidden="true"></i></div>
+				<div class="disc">
+					<p class="taC name">
+						緊急の問題を解決
+					</p>
+					<p class="taC">
+						プロダクトの開発途中のバグであったり、リファクタリングなどの問題を的確に解決します。
+					</p>
+				</div>
+			</li>
+			<li>
+				<div class="taC infoIcon"><i class="fa fa-desktop" aria-hidden="true"></i></div>
+				<div class="disc">
+					<p class="taC name">
+						開発プロセスをスピードアップ
+					</p>
+					<p class="taC">
+						設計思想からメンターを利用することにより、開発途中で悩むケースを削除。
+					</p>
+				</div>
+			</li>
+			<li>
+				<div class="taC infoIcon"><i class="fa fa-cogs" aria-hidden="true"></i></div>
+				<div class="disc">
+					<p class="taC name">
+						画面共有による伝達の簡略
+					</p>
+					<p class="taC">
+						文面だと伝わりづらいことであっても画面共有・会話により伝達時間の短縮。
+					</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+
+{% endblock %}

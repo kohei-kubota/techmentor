@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+	{% static 'css/mentor.css' %}
+{% endblock %}
+
+{% block page %}
+    {% if error %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <div class="container">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Warning!</strong> {{ error }}
+            </div>
+        </div>
+    {% elif success %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <div class="container">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>success：</strong> {{ success }}
+            </div>
+        </div>
+    {% endif %}
+
+    <div id="customize-container">
+        <div id="customize-contents">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4 class="edit-title">メンター編集</h4>
+                    <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                名前：
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{ mentor.name }}" name="name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                得意分野：
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea name="specialty" rows="3" class="form-control">{{ mentor.specialty }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                自己紹介：
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea name="description" rows="3" class="form-control">{{ mentor.description }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                プロフィール：
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea name="about" rows="5" class="form-control">{{ mentor.about }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                実績：
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea name="about" rows="5" class="form-control">{{ mentor.description }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                ポートフォリオ：
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea name="performance" rows="5" class="form-control" id="foo">{% autoescape off %}{{ mentor.performance }}{% endautoescape %}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                STATUS：
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="status" class="form-control">
+                                    <option value="1" {% if mentor.status %}selected{% endif %}>営業中</option>
+                                    <option value="" {% if not mentor.status %}selected{% endif %}>準備中</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">更新</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

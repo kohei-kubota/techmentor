@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+	{% static 'css/mentor.css' %}
+{% endblock %}
+
+{% block page %}
+    {% if error %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Warning!</strong> {{ error }}
+        </div>
+    {% endif %}
+
+    <div id="customize-container">
+        <div id="customize-contents">
+            <div class="panel panel-default">
+                <div class="panel-body">オンライン予約</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead class="bg-success">
+                            <tr>
+                                <th>
+                                    {% for week in week_list %}
+                                    <th>{{ week }}</th>
+                                    {% endfor %}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in show %}
+                                {% autoescape off %}{{ s }}{% endautoescape %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

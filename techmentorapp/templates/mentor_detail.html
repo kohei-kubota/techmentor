@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+	{% static 'css/mentor_detail.css' %}
+{% endblock %}
+
+{% block secondcss %}
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block page %}
+	<div id="customize-container">
+		<div id="customize-contents" class="clearfix">
+			<div class="mentor-contents flL">
+				<div class="customize-inner">
+					<div class="clearfix mentor-list">
+						<div class="flL left-column">
+							<p class="taC"><img src="{% if mentor.user.profile.avatar %}{{ mentor.user.profile.avatar }}{% else %}/media/{{ mentor.user.profile.photo }}{% endif %}" class="profile-img"></p>
+						</div>
+						<div class="flL right-column">
+							<p class="mentor-name">
+								{{ mentor.name }}
+							</p>
+							<p class="mentor-introduce">
+								{{ mentor.specialty }}
+							</p>
+							<p class="mentor-profile">
+								{{ mentor.description }}
+							</p>
+							<ul class="skill-tag">
+								{% for skill in mentor.skill.all %}
+									<li><a href="/category/{{ skill.link }}">{{ skill }}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="wrap-container" id="relative">
+		<div class="row">
+			<div class="col-md-8">
+				<!--<div class="panel panel-default">-->
+					<!--<div class="panel-body">-->
+						<!--<h3>{{ mentor.title }}</h3> &lt;!&ndash;I will create your own website with Django and ReactJS&ndash;&gt;-->
+						<!--<hr/>-->
+						<!--<img src="/media/{{ mentor.photo }}" class="img-responsive center-block">-->
+					<!--</div>-->
+				<!--</div>-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>プロフィール</h4>
+					</div>
+					<div class="panel-body">
+						<p>{{ mentor.about|linebreaks }}</p> <!--  I will create your website in just 2 days. -->
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>スキル自己評価</h4>
+					</div>
+					<div class="panel-body">
+						{% for document in documents %}
+							{% if document.mentor.id == mentor.id %}
+							<div class="clearfix">
+								<p class="flL"><img src="/media/{{ document.skill.icon }}" width="30"></p>
+								<div class="skill-name">
+									<h3>{{ document.skill.name }} <span>- 開発経験 {{ document.experience}} 年</span></h3>
+									<p>{{ document }}</p>
+								</div>
+							</div>
+							<hr>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>ポートフォリオ(実績URL)</h4>
+					</div>
+					<div class="panel-body">
+						<p>{% autoescape off %}{{ mentor.performance }}{% endautoescape %}</p> <!--  I will create your website in just 2 days. -->
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Review</h4>
+					</div>
+
+					{% if show_post_review %}
+						<div class="panel-body">
+							<form method="POST" action="">
+								{% csrf_token %}
+								<div class="form-group">
+									<textarea name="content" class="form-control"></textarea>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-success">POST</button>
+								</div>
+							</form>
+						</div>
+					{% endif %}
+
+					<ul class="list-group">
+						{% for review in reviews %}
+							<li class="list-group-item">
+								<div class="row">
+									<div class="col-md-2">
+										<img src="{% if not review.user.profile.photo == 'photo' %}/media/{{ review.user.profile.photo }}{% else %}{{ review.user.profile.avatar }}{% endif %}" class="img-circle" height="60" width="60">
+									</div>
+									<div class="col-md-10">
+										<h5>{{ review.user.profile.name }}</h5>
+										<p>{{ review.content }}</p>
+									</div>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-4 fixed">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div id="panel-body-inner">
+							<p>状況<span class="flR">
+								{% if mentor.status %}
+								依頼受付中
+								{% else %}
+								拒否
+								{% endif %}
+							</span></p>
+							<p>最終メンター日<span class="flR">{{ mentime }}</span></p>
+							<p>更新日<span class="flR">{{ update }}</span></p>
+							<p>登録日<span class="flR">{{ create }}</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						{% if not mentor.status %}
+							<button type="button" class="btn btn-block btn-warning">現在メンターを受付けていません</button>
+						{% elif user and not user.is_anonymous %}
+							<!--<a href="https://appear.in/{{ apper_url }}" 	class="btn btn-success btn-block">この人にメンターを依頼</a>-->
+							<a href="{% url 'techmentorapp:reserve' mentor.id %}" class="btn btn-success btn-block">この人にメンターを依頼</a>
+							<button type="button" class="btn btn-info btn-block">メッセージで相談する</button>
+						{% else %}
+							<button type="button" class="btn btn-success btn-block">この人にメンターを依頼(ログインが必要)</button>
+							<button type="button" class="btn btn-info btn-block">メッセージで相談する(ログインが必要)</button>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

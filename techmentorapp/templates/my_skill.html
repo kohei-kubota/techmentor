@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+	{% static 'css/mentor.css' %}
+{% endblock %}
+
+{% block page %}
+    {% if error %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <div class="container">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Warning!</strong> {{ error }}
+            </div>
+        </div>
+    {% elif success %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <div class="container">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>success：</strong> {{ success }}
+            </div>
+        </div>
+    {% elif delete %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div class="container">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>delete：</strong> {{ delete }}
+            </div>
+        </div>
+    {% endif %}
+
+    <div id="customize-container">
+        <div id="customize-contents">
+            <div class="clearfix">
+                <h1 style="margin-bottom: 30px" class="flL">スキル一覧</h1>
+                <a href="{% url 'techmentorapp:add_skill' %}"><button type="button" class="btn btn-success btn-block flR" id="add">+スキルを追加する</button></a>
+            </div>
+            <div class="panel panel-default">
+                <form method="post">
+                    {% csrf_token %}
+                    <table class="table table-bordered table-striped">
+                        <thead class="bg-success">
+                            <tr>
+                                <th>
+                                    <th>スキル名</th>
+                                    <th>スキル詳細</th>
+                                    <th>開発年数</th>
+                                    <th>ステータス</th>
+                                    <th></th>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for skill in skills %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td><a href="{% url 'techmentorapp:edit_skill' skill.id %}">{{ skill.skill.name }}</a></td>
+                                    <td>{{ skill.detail }}</td>
+                                    <td>{{ skill.experience }} 年</td>
+                                    <td>{% if skill.status %}Active {% else %} Disabled {% endif %}</td>
+                                    <td><input type="checkbox" name="delete_ids" value="{{ skill.id }}"></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-success">削除</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

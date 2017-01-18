@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+	{% static 'css/mentor.css' %}
+{% endblock %}
+
+{% block page %}
+    <!--<div id="main-background">-->
+		<!--<div class="main-inner">-->
+			<!--<div class="main-content">-->
+				<!--<h2>Techmentor Software Expert Help</h2>-->
+				<!--<p>-->
+					<!--Get instant 1:1 help from expert developers on Codementor. Experts on Codementor include book authors, creators of popular open source libraries, and engineers at well-known tech companies.-->
+				<!--</p>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+
+	<div id="customize-container">
+		<div id="customize-contents" class="clearfix">
+			<div class="mentor-contents flL">
+				<div class="customize-inner">
+					{% for mentor in mentors %}
+					<div class="clearfix mentor-list">
+						<div class="flL left-column">
+							<a href="/mentor/{{ mentor.id }}">
+								<p class="taC"><img src="{% if mentor.user.profile.avatar %}{{ mentor.user.profile.avatar }}{% else %}/media/{{ mentor.user.profile.photo }}{% endif %}" class="profile-img"></p>
+							</a>
+							<p class="messageBtn">
+								{{ mentor.job }}
+							</p>
+						</div>
+						<div class="flL right-column">
+							<p class="mentor-name">
+								<a href="/mentor/{{ mentor.id }}">
+								{{ mentor.name }}
+								</a>
+							</p>
+							<p class="mentor-introduce">
+								{{ mentor.specialty }}
+							</p>
+							<p class="mentor-profile">
+								{{ mentor.description }}
+							</p>
+							<ul class="skill-tag">
+								{% for skill in mentor.skill.all %}
+									<li><a href="/category/{{ skill.link }}">{{ skill }}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					{% endfor %}
+
+					<!--<div class="clearfix mentor-list">-->
+						<!--<a href="">-->
+							<!--<div class="flL left-column">-->
+								<!--<p class="taC"><img src="{% static 'img/mentor/profile-photo.jpg' %}" class="profile-img"></p>-->
+								<!--<a class="messageBtn" href="#">-->
+									<!--Message Andres-->
+								<!--</a>-->
+							<!--</div>-->
+							<!--<div class="flL right-column">-->
+								<!--<p class="mentor-name">-->
+									<!--ステファン・シュミット-->
+								<!--</p>-->
+								<!--<p class="mentor-introduce">-->
+									<!--シニアのJava/ウェブバックエンドの開発者-->
+								<!--</p>-->
+								<!--<p class="mentor-profile">-->
+									<!--9年間のプロのJava開発経験。清潔で読み取り可能なコードと洗練されたソリューションへの情熱。あなたが積極的になり、私たちは時間がない中で一緒にあなたの問題を解決してみましょう...-->
+								<!--</p>-->
+								<!--<ul class="skill-tag">-->
+									<!--<li><a href="">JavaScript</a></li>-->
+									<!--<li><a href="">Python</a></li>-->
+									<!--<li><a href="">Unity</a></li>-->
+								<!--</ul>-->
+							<!--</div>-->
+						<!--</a>-->
+					<!--</div>-->
+
+
+					<p class="more_btn">もっと見る...</p>
+				</div>
+			</div>
+
+			<div class="right-column">
+				<div class="topics">
+					<h2 class="heading">NEWS TOPICS</h2>
+					<div class="topic-header clearfix">
+						<p class="news-tag">News</p>
+						<p class="news-date">2016/06/01</p>
+					</div>
+					<h3 class="news-title">複数ソーシャルアカウントの連携ができるようになりました！</h3>
+					<div class="topic-header clearfix">
+						<p class="news-tag">News</p>
+						<p class="news-date">2016/06/01</p>
+					</div>
+					<h3 class="news-title">新しいタグを20個追加しました！</h3>
+					<div class="topic-header clearfix">
+						<p class="news-tag">News</p>
+						<p class="news-date">2016/06/01</p>
+					</div>
+					<h3 class="news-title">複数ソーシャルアカウントの連携ができるようになりました！</h3>
+					<div class="topic-header clearfix">
+						<p class="news-tag">News</p>
+						<p class="news-date">2016/06/01</p>
+					</div>
+					<h3 class="news-title">複数ソーシャルアカウントの連携ができるようになりました！</h3>
+					<p class="more-read"><i class="fa fa-caret-right" aria-hidden="true"></i><a>一覧を見る</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
