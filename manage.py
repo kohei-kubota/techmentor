@@ -3,6 +3,8 @@ import os
 import sys
 import pymysql
 
+pymysql.install_as_MySQLdb()
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "techmentor.settings")
     try:
@@ -21,5 +23,3 @@ if __name__ == "__main__":
             )
         raise
     execute_from_command_line(sys.argv)
-
-pymysql.install_as_MySQLdb()
