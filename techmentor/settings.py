@@ -25,6 +25,11 @@ SECRET_KEY = 'h=5ir9c1e621xkqta#)t5kdmu%61i_0+pk$l0+i=w8^^#pf)qf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ALLOWED_HOSTS = [
+    'warm-peak-78292.herokuapp.com',
+    'localhost',
+]
+
 ALLOWED_HOSTS = []
 
 
