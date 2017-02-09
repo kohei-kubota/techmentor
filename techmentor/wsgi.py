@@ -18,3 +18,6 @@ application = get_wsgi_application()
 # Use whitenoise to serve static file on Heroku
 from whitenoise.django import DjangoWhiteNoise
 application = DjangoWhiteNoise(application)
+
+import pymysql
+pymysql.install_as_MySQLdb()
