@@ -27,7 +27,7 @@ class Mentor(models.Model):
     status = models.BooleanField(default=True)
 
     mentor_time = models.DateTimeField(default=timezone.now)
-    update_time = models.DateTimeField(auto_now=True)
+    update_time = models.DateTimeField(default=timezone.now)
     create_time = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -70,7 +70,7 @@ class Review(models.Model):
 class Reserve(models.Model):
     user = models.ForeignKey(User)
     mentor = models.ForeignKey(Mentor)
-    date_time = models.DateTimeField(auto_now=False)
+    date_time = models.DateTimeField(default=timezone.now)
 
 
 class Infomation(models.Model):
