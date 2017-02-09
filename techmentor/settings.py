@@ -26,7 +26,7 @@ SECRET_KEY = 'h=5ir9c1e621xkqta#)t5kdmu%61i_0+pk$l0+i=w8^^#pf)qf'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'warm-peak-78292.herokuapp.com',
+    'infinite-basin-11732.herokuapp.com',
     'localhost',
 ]
 
