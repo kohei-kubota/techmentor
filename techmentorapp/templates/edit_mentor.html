@@ -30,7 +30,10 @@
         <div id="customize-contents">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h4 class="edit-title">メンター編集</h4>
+                    <div class="clearfix edit-wrapper">
+                        <h4 class="edit-title flL">メンター編集</h4>
+                        <a href="{% url 'techmentorapp:mentor_detail' mentor.id %}?previvew=true" class="btn btn-success flR">メンター確認</a>
+                    </div>
                     <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
 

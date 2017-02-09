@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+	{% static 'css/mentor.css' %}
+{% endblock %}
+
+{% block page %}
+
+	<div id="customize-container">
+		<div id="customize-contents" class="clearfix">
+			<div class="mentor-contents flL">
+				<div class="customize-inner infomation">
+                    <div class="headding">
+                        <h2>運営会社</h2>
+                    </div>
+                    <div class="info-list">
+                        <div class="company-info clearfix">
+                            <p class="col-sm-3 control-label">
+                                運営会社名
+                            </p>
+                            <div class="col-sm-8">
+                                <p>株式会社Cowork Place</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-list">
+                        <div class="company-info clearfix">
+                            <p class="col-sm-3 control-label">
+                                本社所在地
+                            </p>
+                            <div class="col-sm-8">
+                                <p>〒100-6328<br>東京都千代田区丸の内2-4-1 丸の内ビルディング27F・28F</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-list">
+                        <div class="company-info clearfix">
+                            <p class="col-sm-3 control-label">
+                                代表者名
+                            </p>
+                            <div class="col-sm-8">
+                                <p>代表取締役社長　久保田 公平</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-list">
+                        <div class="company-info clearfix">
+                            <p class="col-sm-3 control-label">
+                                事業内容
+                            </p>
+                            <div class="col-sm-8">
+                                <p>正社員領域・アルバイト・パート領域の求人メディアの運営、人材紹介サービス、人材派遣、アウトソーシングサービス、 新卒採用支援、 教育研修サービス、組織・人事コンサルティングサービス、再就職支援サービス、システムインテグレーションサービスなど</p>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+
+            {% include "info-right-column.html" %}
+
+		</div>
+	</div>
+{% endblock %}

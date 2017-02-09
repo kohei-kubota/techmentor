@@ -91,7 +91,20 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 							   role="button" area-haspopup="true" area-expanded="false">
-								<img src="{% if user.profile %}{% if user.profile.avatar %}{{ user.profile.avatar }}{% else %}/media/{{ user.profile.photo }}{% endif %}{% else %}{% static 'img/common/icon.png' %}{% endif %}" class="img-circle" height="22" width="22">&nbsp;
+								<img src="
+								{% if user.profile %}
+                                    {% if user.profile.photo %}
+                                        {% ifnotequal user.profile.photo 'photo' %}
+                                            /media/{{ user.profile.photo }}
+                                        {% else %}
+                                            {{ user.profile.avatar }}
+                                        {% endifnotequal %}
+                                    {% else %}
+                                    	{{ user.profile.avatar }}
+                                    {% endif %}
+								{% else %}
+								    {% static 'img/common/icon.png' %}
+								{% endif %}" class="img-circle" height="22" width="22">&nbsp;
 								{{ user.profile.name|default:user.username }} <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
@@ -147,8 +160,8 @@
 					<li>
 						<p class="title">Techmentorについて</p>
 						<div class="disc">
-							<p class=""><a href="">ご利用ガイド</a></p>
-							<p class=""><a href="">よくある質問</a></p>
+							<!--<p class=""><a href="">ご利用ガイド</a></p>-->
+							<!--<p class=""><a href="">よくある質問</a></p>-->
 							<p class=""><a href="">お問い合わせ</a></p>
 						</div>
 					</li>

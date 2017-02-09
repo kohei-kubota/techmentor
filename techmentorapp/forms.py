@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Mentor, Profile, Skill_Detail, Reserve, Available
+from .models import Mentor, Profile, Skill_Detail, Reserve, Available, Contact
 from tinymce.widgets import TinyMCE
 
 class MentorForm(ModelForm):
@@ -36,3 +36,8 @@ class ScheduleForm(ModelForm):
     class Meta:
         model = Available
         fields = ['date', 'time', 'status']
+
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'subject', 'text']

@@ -1,15 +1,30 @@
 from django.shortcuts import render, redirect
-from .models import Mentor, Skill_Detail, Profile, Review, Skill, Available
+from .models import Mentor, Skill_Detail, Profile, Review, Skill, Available, Infomation
 from django.utils import dateformat
 from django.contrib.auth.decorators import login_required
-from .forms import MentorForm, ProfileForm, SkillForm, AddSkillForm, ScheduleForm
+from .forms import MentorForm, ProfileForm, SkillForm, AddSkillForm, ScheduleForm, ContactForm
 from datetime import datetime as dt
 import string, random, datetime
 import urllib.parse
 from django.db.models import Q
-# from email.mime.text import MIMEText
-# from email.mime.multipart import MIMEMultipart
 from django.core.mail import send_mail
+from django.core.paginator import (
+    Paginator,  # ページネーター本体のクラス
+    EmptyPage,  # ページ番号が範囲外だった場合に発生する例外クラス
+    PageNotAnInteger  # ページ番号が数字でなかった場合に発生する例外クラス
+)
+
+
+# def _get_page(list_, page_no, count=1):
+#     """ページネーターを使い、表示するページ情報を取得する"""
+#     paginator = Paginator(list_, count)
+#     try:
+#         page = paginator.page(page_no)
+#     except (EmptyPage, PageNotAnInteger):
+#         # page_noが指定されていない場合、数値で無い場合、範囲外の場合は
+#         # 先頭のページを表示する
+#         page = paginator.page(1)
+#     return page
 
 
 # Create your views here.
@@ -17,6 +32,7 @@ def home(request):
     return render(request, 'home.html', {})
 
 def mentor_detail(request, id):
+
     if request.method == "POST" and \
         not request.user.is_anonymous() and \
         'content' in request.POST and \
@@ -36,6 +52,14 @@ def mentor_detail(request, id):
     mentime = dateformat.format(m, 'Y年 n月 d日')
     documents = Skill_Detail.objects.filter(status=True)
 
+    url = request.get_full_path()
+    parsed = urllib.parse.urlparse(url)
+    params = urllib.parse.parse_qs(parsed.query)
+
+    if not params:
+        if mentor.user == request.user:
+            return redirect('/mentor_list/')
+
     # mentor.mentor_time = 1
     # mentor.save()
 
@@ -53,18 +77,34 @@ def mentor_detail(request, id):
         "update": update,
         "mentime": mentime,
         "reviews": reviews,
-        "show_post_review": show_post_review
+        "show_post_review": show_post_review,
+        "params": params,
     })
 
-def mentor_list(request):
-    try:
-        mentors = {
-            'mentors': Mentor.objects.all(),
-        }
-    except Mentor.DoesNotExist:
-        return redirect('/')
 
-    return render(request, 'mentor_list.html', mentors)
+def mentor_list(request):
+    info = Infomation.objects.all().order_by('-id')[:4]
+    if not request.user.is_anonymous():
+        mentors = Mentor.objects.all().exclude(user=request.user)
+    else:
+        mentors = Mentor.objects.all()
+    page = request.GET.get('page')
+
+    paginator = Paginator(mentors, 10)
+    try:
+        # mentors = _get_page(
+        #     Mentor.objects.order_by('-id'),  # 投稿を新しい順に並び替えて取得する
+        #     request.GET.get('page')  # GETクエリからページ番号を取得する
+        # )
+
+        paged_list = paginator.page(page)
+    except PageNotAnInteger:
+        paged_list = paginator.page(1)
+    except EmptyPage:
+        paged_list = paginator.page(paginator.num_pages)
+
+
+    return render(request, 'mentor_list.html', {'mentors': paged_list, 'info': info})
 
 @login_required(login_url="/")
 def edit_mentor(request):
@@ -93,6 +133,9 @@ def edit_profile(request):
         if request.method == 'POST':
             profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
             if profile_form.is_valid():
+                # photoが空白だった場合は既存のまま
+                # if not photo:
+                #     profile.photo = photo
                 profile.save()
                 # return redirect('/edit_profile/')
                 success = "更新しました"
@@ -187,11 +230,22 @@ def category(request, link):
     }
     try:
         skill = Skill.objects.get(name=categories[link])
-        mentors = Mentor.objects.filter(skill=skill)
+        mentors = Mentor.objects.filter(skill=skill).exclude(user=request.user)
+        info = Infomation.objects.all().order_by('-id')[:4]
         # mentors = Mentor.objects.all()
-        return render(request, 'mentor_list.html', {'mentors': mentors, 'skill': skill })
     except Skill.DoesNotExist:
         return redirect('/')
+
+    page = request.GET.get('page')
+
+    paginator = Paginator(mentors, 10)
+    try:
+        paged_list = paginator.page(page)
+    except PageNotAnInteger:
+        paged_list = paginator.page(1)
+    except EmptyPage:
+        paged_list = paginator.page(paginator.num_pages)
+    return render(request, 'mentor_list.html', {'mentors': paged_list, 'skill': skill, 'info': info})
 
 
 def search(request):
@@ -201,14 +255,29 @@ def search(request):
             # Q(skill__name__in=request.GET['title']) |
             Q(about__contains=request.GET['title']) |
             Q(job__contains=request.GET['title'])
-        )
+        ).exclude(user=request.user)
     except KeyError:
         return redirect('/')
-    return render(request, 'mentor_list.html', {'mentors': mentors})
+
+    info = Infomation.objects.all().order_by('-id')[:4]
+    page = request.GET.get('page')
+
+    paginator = Paginator(mentors, 10)
+    try:
+        paged_list = paginator.page(page)
+    except PageNotAnInteger:
+        paged_list = paginator.page(1)
+    except EmptyPage:
+        paged_list = paginator.page(paginator.num_pages)
+
+    return render(request, 'mentor_list.html', {'mentors': paged_list, 'info': info})
 
 
 @login_required(login_url="/")
 def reserve(request, id):
+    if not request.user.profile.email:
+        error = "emailを設定してください"
+        return redirect(request.META.get('HTTP_REFERER'), error=error)
     week = datetime.date.today()
     today = datetime.date.today()
     date_time = []
@@ -216,7 +285,7 @@ def reserve(request, id):
     week_list = []
     date_format = []
     time_list = []
-    hour = 10
+    hour = 11
     minutes = "00"
     int_minutes = 0
     for i in range(7):
@@ -235,7 +304,7 @@ def reserve(request, id):
 
     for i in range(7):
         today = today + datetime.timedelta(days=1)
-        hour = 10
+        hour = 11
         for j in range(9):
             for k in range(2):
                 time = datetime.time(hour, int_minutes, 0)
@@ -264,21 +333,19 @@ def reserve(request, id):
                             if ava.status == True:
                                 status = "○"
                                 tbody_list.append('''
-                                <td> <p class="text-center">'''
-                                + status +
-                                '''
-                                </p><a href="/mentor/reserve_check/'''
+                                <td><a href="/mentor/reserve_check/'''
                                 + str(ava.id) +
                                 '''/'''
                                 + str(mentor.id) +
-                                '''" class="btn btn-success btn-block"> 
-                                予約 
+                                '''" class="btn btn-info schedule-btn"> '''
+                                + status +
+                                '''
                                 </a>  
                                 </td>''')
                             else:
                                 status = "×"
                                 tbody_list.append('''
-                                <td> <p class="text-center">'''
+                                <td> <p class="btn btn-success schedule-btn disabled">'''
                                 + status +
                                 '''
                                 </p></td>''')
@@ -288,8 +355,8 @@ def reserve(request, id):
                         boolean = True
                     elif boolean == True:
                         tbody_list.append('''
-                            <td style="vertical-align: middle"> 
-                            <p class="text-center">×</p>
+                            <td> 
+                            <p class="btn btn-success schedule-btn disabled">×</p>
                             </td> 
                             ''')
             close = '</tr>'
@@ -314,6 +381,7 @@ def reserve(request, id):
         'show': show
     })
 
+
 @login_required(login_url="/")
 def my_schedule(request):
     week = datetime.date.today()
@@ -323,9 +391,14 @@ def my_schedule(request):
     week_list = []
     date_format = []
     time_list = []
-    hour = 10
+    hour = 11
     minutes = "00"
     int_minutes = 0
+    url = request.get_full_path()
+    parsed = urllib.parse.urlparse(url)
+    params = urllib.parse.parse_qs(parsed.query)
+    if params:
+        week = datetime.date.today() + datetime.timedelta(days=7)
     for i in range(7):
         week = week + datetime.timedelta(days=1)
         week_list.append(week)
@@ -373,18 +446,26 @@ def my_schedule(request):
                             status = ''
                             if ava.status == True:
                                 status = "○"
+                                tbody_list.append('''
+                                <td> 
+                                <a href="/edit_schedule/'''
+                                + str(ava.id) +
+                                '''" class="btn btn-info schedule-btn"> '''
+                                + status +
+                                '''
+                                </a>  
+                                </td>''')
                             else:
                                 status = "×"
-                            tbody_list.append('''
-                            <td> <p class="text-center">'''
-                            + status +
-                            '''
-                            </p><a href="/edit_schedule/'''
-                            + str(ava.id) +
-                            '''" class="btn btn-success btn-block"> 
-                            編集
-                            </a>  
-                            </td>''')
+                                tbody_list.append('''
+                                <td> 
+                                <a href="/edit_schedule/'''
+                                + str(ava.id) +
+                                '''" class="btn btn-success schedule-btn"> '''
+                                + status +
+                                '''
+                                </a>  
+                                </td>''')
                             boolean = False
                             break
                     if boolean == False:
@@ -392,13 +473,12 @@ def my_schedule(request):
                     elif boolean == True:
                         tbody_list.append('''
                         <td> 
-                        <p class="text-center">×</p>
                             <a href="/create_schedule/?date='''
                             + week +
                             '''&time='''
                             + time +
-                            '''" class="btn btn-success btn-block">
-                                編集
+                            '''" class="btn btn-success schedule-btn">
+                                ×
                             </a> 
                         </td> 
                         ''')
@@ -423,7 +503,8 @@ def my_schedule(request):
         'available': available,
         'date_format': date_format,
         'available_format': available_format,
-        'show': show
+        'show': show,
+        'params': params
     })
 
 @login_required(login_url="/")
@@ -505,7 +586,7 @@ def reserve_check(request, id, mentor):
             schedule.save()
 
             tdatetime = avalilable.date + avalilable.time
-            mentor.mentor_time = dt.strptime(tdatetime, '%Y-%m-%d %H:%M:%S')
+            mentor.mentor_time = dt.strptime(tdatetime, '%Y年%m月%d日%H:%M')
             mentor.save()
 
             def random_string(length, seq=string.digits + string.ascii_lowercase):
@@ -521,10 +602,20 @@ def reserve_check(request, id, mentor):
             bcc_addrs = mentor.user.profile.email
 
             subject = "予約確認メール"
-            body_text = '''予約者： {0}
+            body_text = '''
+            ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+            　　　　　　ご予約は下記のとおりです。
+            ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+            予約者： {0}
             メンター： {1}
             予約日時： {2}
             URL： {3}
+
+            ■■□―――――――――――――――――――□■■
+            TechMentor運営事務局
+            URL：http://techmentor.jp/
+            ■■□―――――――――――――――――――□■■
             '''.format(profile.name, mentor.name, avalilable.date + avalilable.time, apper_url)
 
             send_mail(subject, body_text, from_addr, [to_addrs], fail_silently=False)
@@ -538,9 +629,112 @@ def reserve_check(request, id, mentor):
     return render(request, 'reserve_check.html', {"avalilable": avalilable, "mentor": mentor})
 
 
-@login_required(login_url="/")
 def thanks_page(request):
     return render(request, 'thanks.html', {})
+
+
+def infomation(request):
+    try:
+        info = Infomation.objects.all().order_by('-id')[:10]
+    except Infomation.DoesNotExist:
+        return redirect('/')
+    return render(request, 'infomation.html', {"info": info})
+
+def contact(request):
+    if request.method == 'POST':
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            contact = contact_form.save(commit=False)
+            contact.save()
+
+            from_addr = 'no-reply@coworkplace.jp'
+            to_addrs = 'kubota-kohei@coworkplace.jp'
+
+            name = request.POST["name"]
+            email = request.POST["email"]
+            subject = request.POST["subject"]
+            reply_subject = "お問い合わせが送信されました"
+            text = request.POST["text"]
+
+            body_text = '''
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+　　　　　　お問い合わせがありました
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+【名前】
+{0}
+【メールアドレス】
+{1}
+【件名】
+{2}
+【内容】
+{3}
+
+<お問い合わせ先>
+http://techmentor.jp/contact
+
+■■□―――――――――――――――――――□■■
+TechMentor運営事務局
+URL：http://techmentor.jp
+■■□―――――――――――――――――――□■■
+            '''.format(name, email, subject, text)
+
+            reply_text = '''
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+                   お問い合わせを受付しました
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+TechMnetor運営事務局です。
+
+以下の内容でお問い合わせが送信されましたので、ご確認ください。
+
+【名前】
+{0}
+【メールアドレス】
+{1}
+【件名】
+{2}
+【内容】
+{3}
+
+※このメールはTechMentorをご利用中のお客様にお送りしております。
+お心当たりのない場合やご不明な点などございましたら、以下のお問合せ先までご連絡ください。
+※本メールに返信されてもご返答はいたしかねます。
+
+<お問い合わせ先>
+http://techmentor.jp/contact
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+※　このメールに見覚えのない場合はお手数ですが破棄してください。
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+■■□―――――――――――――――――――□■■
+TechMentor運営事務局
+URL：http://techmentor.jp
+■■□―――――――――――――――――――□■■
+            '''.format(name, email, subject, text)
+
+            send_mail(reply_subject, body_text, from_addr, [to_addrs], fail_silently=False)
+
+            send_mail(reply_subject , reply_text, from_addr, [email], fail_silently=False)
+
+            return redirect('/thanks_page/')
+        else:
+            error = contact_form.errors
+            return render(request, 'contact.html', {"error": error})
+
+
+    return render(request, 'contact.html', {})
+
+def company(request):
+    return render(request, 'company.html', {})
+
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html', {})
+
+def policy(request):
+    return render(request, 'policy.html', {})
+
 
 
 

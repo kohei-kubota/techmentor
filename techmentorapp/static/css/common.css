@@ -114,6 +114,10 @@ select, button {
   /* margin-right: 20px!important; */
 }
 
+
+/*--------------------------------------------------------------------
+  ソーシャルログイン
+--------------------------------------------------------------------*/
 .social-login {
     margin-top: 30px;
 }
@@ -157,7 +161,8 @@ select, button {
     background-color: #70aecd;
 }
 .social-login .btn.git {
-    background-color: #5a7285;
+    /* background-color: #5a7285; */
+    background-color: #bec5ca;
 }
 
 

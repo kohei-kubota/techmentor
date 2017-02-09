@@ -18,4 +18,9 @@ urlpatterns = [
     url(r'^create_schedule/$', views.create_schedule, name='create_schedule'),
     url(r'^mentor/reserve_check/(?P<id>[0-9]+)/(?P<mentor>[0-9]+)/$', views.reserve_check, name='reserve_check'),
     url(r'^thanks_page/$', views.thanks_page, name='thanks_page'),
+    url(r'^infomation/$', views.infomation, name='infomation'),
+    url(r'^contact/$', views.contact, name='contact'),
+    url(r'^company/$', views.company, name='company'),
+    url(r'^privacy_policy/$', views.privacy_policy, name='privacy_policy'),
+    url(r'^policy/$', views.policy, name='policy'),
 ]

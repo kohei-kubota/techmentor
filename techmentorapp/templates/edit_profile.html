@@ -48,7 +48,20 @@
                                 プロフィール画像：
                             </label>
                             <div class="col-sm-10">
-                                <img src="{% if user.profile %}{% if user.profile.avatar %}{{ user.profile.avatar }}{% else %}/media/{{ user.profile.photo }}{% endif %}{% else %}{% static 'img/common/icon.png' %}{% endif %}" height="50" class="flL">
+                                <img src="
+                                {% if user.profile %}
+                                    {% if user.profile.photo %}
+                                        {% ifnotequal user.profile.photo 'photo' %}
+                                            /media/{{ user.profile.photo }}
+                                        {% else %}
+                                            {{ user.profile.avatar }}
+                                        {% endifnotequal %}
+                                    {% else %}
+                                    	{{ user.profile.avatar }}
+                                    {% endif %}
+								{% else %}
+								    {% static 'img/common/icon.png' %}
+								{% endif %}" height="50" class="flL">
                                 <input type="file" class="form-control" name="photo" id="image-control">
                             </div>
                         </div>

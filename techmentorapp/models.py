@@ -8,7 +8,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     avatar = models.FileField(upload_to='avatar')
-    photo = models.FileField(upload_to='profile')
+    photo = models.FileField(upload_to='profile', blank=True)
     email = models.EmailField(max_length=255, unique=True)
 
     def __str__(self):
@@ -22,7 +22,7 @@ class Mentor(models.Model):
     about = models.TextField()
     description = models.TextField()
     performance = HTMLField()
-    job = models.CharField(max_length=100)
+    job = models.CharField(max_length=100, default="エンジニア")
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     status = models.BooleanField(default=True)
 
@@ -72,6 +72,18 @@ class Reserve(models.Model):
     mentor = models.ForeignKey(Mentor)
     date_time = models.DateTimeField(auto_now=False)
 
+
+class Infomation(models.Model):
+    title = models.CharField(max_length=200)
+    description = HTMLField()
+    tag = models.CharField(max_length=100)
+    date_time = models.DateTimeField(default=timezone.now)
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=255)
+    subject = models.CharField(max_length=100)
+    text = models.TextField()
 
 
 

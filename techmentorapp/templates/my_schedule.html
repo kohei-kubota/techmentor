@@ -18,8 +18,18 @@
         <div id="customize-contents">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h4>スケジュール設定</h4>
-                    <table class="table table-bordered table-striped">
+                    <div class="row center-block">
+                        <ul class="pager">
+                            {% if params %}
+                                <li class="pull-left"><a href="{% url 'techmentorapp:my_schedule' %}">前週</a></li>
+                            {% endif %}
+                            <li class="lead">スケジュール設定</li>
+                            {% if not params %}
+                                <li class="pull-right"><a href="?page=next">翌週</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <table class="table table-bordered table-striped" id="table-width">
                         <thead class="bg-success">
                             <tr>
                                 <th>

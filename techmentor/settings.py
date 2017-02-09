@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',
     'tinymce',
     'django_sendgrid',
+    'pure_pagination',  # for django-pure-pagination
 ]
 
 MIDDLEWARE = [
@@ -192,3 +193,10 @@ SENDGRID_EMAIL_USERNAME = 'sgw9qs0n@kke.com'  # SendGridの設定値を記述す
 SENDGRID_EMAIL_PASSWORD = 'RpS/z.,bYVmkc)6S'
 EMAIL_USE_TLS = True
 SENDGRID_API_KEY = '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'
+
+# for django-pure-pagination settings
+PAGINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 2,
+    'MARGIN_PAGES_DISPLAYED': 2,
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}

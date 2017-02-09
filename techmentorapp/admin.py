@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Mentor, Skill, Skill_Detail, Review, Reserve, Available
+from .models import Profile, Mentor, Skill, Skill_Detail, Review, Reserve, Available, Infomation
 
 # Register your models here.
 admin.site.register(Profile)
@@ -18,5 +18,6 @@ admin.site.register(Skill)
 admin.site.register(Review)
 admin.site.register(Reserve)
 admin.site.register(Available)
+admin.site.register(Infomation)
 
 admin.site.register(Skill_Detail)

@@ -223,4 +223,117 @@
   width: 150px;
   margin-top: 20px;
 }
+
+/* infomation用 */
+#customize-container .infomation {
+  background: #fff;
+}
+
+#customize-container .infomation .topics {
+  padding: 15px;
+}
+#customize-container .right-column .heading {
+  border-bottom: 5px solid #000;
+  padding: 0 6px 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+#customize-container .infomation .topic-header {
+  padding-top: 20px;
+}
+#customize-container .infomation .news-tag {
+  padding: 5px 10px;
+  margin-right: 10px;
+  background-color: #324859;
+  color: #fff;
+  float: left;
+  font-size: 13px;
+}
+#customize-container .infomation .news-date {
+  float: left;
+  font-size: 13px;
+  padding: 5px 0;
+}
+#customize-container .infomation .news-title {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #666;
+  line-height: 1.7;
+  padding-bottom: 20px;
+  font-weight: 700;
+}
+#customize-container .infomation .news-description {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+#customize-container .info-list {
+  padding: 0 30px 20px;
+}
+#customize-container .headding {
+  border-bottom: 3px solid #000;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+#customize-container .headding h2 {
+  font-size: 30px;
+  line-height: 2;
+  padding: 0 30px;
+  font-weight: 700;
+}
+
+.side-menu li {
+
+}
+.side-menu li a {
+  display: block;
+  padding: 15px 10px;
+  border-bottom: 1px solid #ccc;
+}
+.side-menu li a:hover {
+  text-decoration: none;
+  background: #d9d9d9;
+}
+
+
+/* edit-mentor用 */
+.edit-wrapper {
+  border-bottom: 1px solid #000;
+}
+.edit-wrapper .edit-title {
+  border-bottom: none;
+}
+
+/* スケジュール用 */
+.table .schedule-btn {
+  width: 40px;
+  margin: 0 auto;
+}
+#table-width {
+  width: 85%;
+  margin: 0 auto;
+}
+#table-width .td-box {
+  margin: 0 auto;
+  width: 40px;
+}
+#table-width td {
+  text-align: center;
+}
+
+/* 運営会社用 */
+#customize-container .infomation .company-info {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+/* プライバシーポリシー用 */
+#customize-container .infomation h4 {
+  margin: 30px 0 20px;
+}
+#customize-container .infomation .privacy p {
+  margin-bottom: 30px;
+}
+
+
+
 /*# sourceMappingURL=mentor.css.map */
