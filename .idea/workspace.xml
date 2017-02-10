@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6144b229-b241-490a-8d57-155d2c119c40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/techmentor/settings.py" afterPath="$PROJECT_DIR$/techmentor/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html" afterPath="$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +17,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/techmentor/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1380">
               <caret line="192" column="80" lean-forward="false" selection-start-line="192" selection-start-column="80" selection-end-line="192" selection-end-column="80" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mentor_list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1079">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -103,21 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mentor_detail.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mentor_detail.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+            <state relative-caret-position="271">
+              <caret line="84" column="57" lean-forward="true" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -128,6 +128,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>MED</find>
+      <find>media</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,6 +146,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/techmentor/settings.py" />
+        <option value="$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html" />
       </list>
     </option>
   </component>
@@ -526,14 +528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/techmentorapp/social_auth_pipeline.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -590,6 +584,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1380">
           <caret line="192" column="80" lean-forward="false" selection-start-line="192" selection-start-column="80" selection-end-line="192" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1079">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="84" column="57" lean-forward="true" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
           <folding />
         </state>
       </provider>

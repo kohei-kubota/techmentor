@@ -79,7 +79,7 @@
 						{% for document in documents %}
 							{% if document.mentor.id == mentor.id %}
 							<div class="clearfix">
-								<p class="flL"><img src="/media/{{ document.skill.icon }}" width="30"></p>
+								<p class="flL"><img src="https://s3-ap-northeast-1.amazonaws.com/techmentor-django-storage/{{ document.skill.icon }}" width="30"></p>
 								<div class="skill-name">
 									<h3>{{ document.skill.name }} <span>- 開発経験 {{ document.experience}} 年</span></h3>
 									<p>{{ document }}</p>
