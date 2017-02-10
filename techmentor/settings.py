@@ -182,7 +182,7 @@ MEDIA_URL = '/media/'
 
 # AWS_ACCESS_KEY_ID = 'AKIAJJ2Z3YF4AJCVYF5A'
 # AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'techmentor-django-storage'
+AWS_STORAGE_BUCKET_NAME = 'techmentor-django-storage'
 # collectstaic時にS3を使う
 # MEDIAFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # これをTrueにしたほうがファイル変更のチェックが速くなる
