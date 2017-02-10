@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'tinymce',
     'django_sendgrid',
     'pure_pagination',  # for django-pure-pagination
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -176,8 +177,18 @@ db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
 # Setup upload directory for Language model
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+MEDIA_URL = 'https://s3-ap-northeast-1.amazonaws.com/techmentor-django-storage/'
+
+# collectstaic時にS3を使う
+MEDIAFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_STORAGE_BUCKET_NAME = 'techmentor-django-storage'
+# これをTrueにしたほうがファイル変更のチェックが速くなる
+AWS_PRELOAD_METADATA = True
+
+
+
 
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
