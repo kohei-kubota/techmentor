@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'h=5ir9c1e621xkqta#)t5kdmu%61i_0+pk$l0+i=w8^^#pf)qf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    'glacial-sea-43126.herokuapp.com',
+    'www.techmentor.jp',
     'localhost',
 ]
 
@@ -203,4 +203,12 @@ PAGINATION_SETTINGS = {
     'MARGIN_PAGES_DISPLAYED': 2,
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
 }
+
+MIDDLEWARE_CLASSES = [
+    'lib.middleware.RedirectCorrectHostname',
+]
+
+CORRECT_HOST = 'www.techmentor.jp/'
+
+
 
