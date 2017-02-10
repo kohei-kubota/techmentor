@@ -5,16 +5,10 @@
     <meta charset="utf-8">
     <title>Techmentor【テックメンター】</title>
     <link rel="shortcut icon" href="{% static 'img/common/532108815_fav.ico' %}">
-    <meta name="keywords" content="コワークプレイス,CoworkPlace,コワーキングスペース">
-    <meta name="description" content="コワーキングスペースを探すなら「コワークプレイス」。デザイン、エンジニアなどの職種毎などから今求めているコワーキングスペース探しに対応します。">
+    <meta name="keywords" content="テックメンター、techmentor">
+    <meta name="description" content="プログラミングのメンターサポートなら「テックメンター(techmentor)」現役エンジニアがオンラインサポートします。">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <!--<meta property="og:title" content="コワーキング・イベントスペース予約サイト | CoworkPlace(コワークプレイス)">-->
-    <!--<meta property="og:type" content="article">-->
-    <!--<meta property="og:description" content="コワーキングスペースを探すなら「コワークプレイス」。デザイン、エンジニアなどの職種毎などから今求めているコワーキングスペース探しに対応します。">-->
-    <!--<meta property="og:url" content="http://coworkplace.jp/">-->
-    <!--<meta property="og:image" content="http://coworkplace.jp/img/common/ogp.jpg">-->
-    <!--<meta property="og:site_name" content="CoworkPlace(コワークプレイス)">-->
 
 
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
@@ -63,10 +57,11 @@
 	<header id="header" class="clearfix">
 		<div class="container">
 			<div class="flL">
-				<h1 id="logo"><a href="/">Techmentor</a></h1>
+				<h1 id="logo"><a href="/">Techentor</a></h1>
 				<nav id="g-nav">
 					<ul>
 						<li><a href="{% url 'techmentorapp:mentor_list' %}">メンターを探す</a></li>
+						<li><a href="">β版公開中</a></li>
 						<!--<li><a href="">使い方</a></li>-->
 						<!--<li><a href="">Techmentorになる</a></li>-->
 						<li>
@@ -151,18 +146,19 @@
 					<li>
 						<p class="title">人気のカテゴリー</p>
 						<div class="disc">
-							<p class=""><a href="">php</a></p>
-							<p class=""><a href="">javascript</a></p>
-							<p class=""><a href="">Ruby</a></p>
-							<p class=""><a href="">Python</a></p>
+							<p class=""><a href="/category/php">php</a></p>
+							<p class=""><a href="/category/javascript">javascript</a></p>
+							<p class=""><a href="/category/ruby-on-rails">Ruby on Rails</a></p>
+							<p class=""><a href="/category/python">Python</a></p>
 						</div>
 					</li>
 					<li>
 						<p class="title">Techmentorについて</p>
 						<div class="disc">
-							<!--<p class=""><a href="">ご利用ガイド</a></p>-->
-							<!--<p class=""><a href="">よくある質問</a></p>-->
-							<p class=""><a href="">お問い合わせ</a></p>
+							<p class=""><a href="{% url 'techmentorapp:contact' %}">お問い合わせ</a></p>
+							<p class=""><a href="{% url 'techmentorapp:privacy_policy' %}">プライバシーポリシー</a></p>
+							<p class=""><a href="{% url 'techmentorapp:policy' %}">利用規約</a></p>
+							<p class=""><a href="{% url 'techmentorapp:company' %}">運営会社</a></p>
 						</div>
 					</li>
 				</ul>

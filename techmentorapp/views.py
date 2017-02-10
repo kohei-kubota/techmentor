@@ -230,7 +230,11 @@ def category(request, link):
     }
     try:
         skill = Skill.objects.get(name=categories[link])
-        mentors = Mentor.objects.filter(skill=skill).exclude(user=request.user)
+        # mentors = Mentor.objects.filter(skill=skill).exclude(user=request.user)
+        if not request.user.is_anonymous():
+            mentors = Mentor.objects.filter(skill=skill).exclude(user=request.user)
+        else:
+            mentors = Mentor.objects.filter(skill=skill)
         info = Infomation.objects.all().order_by('-id')[:4]
         # mentors = Mentor.objects.all()
     except Skill.DoesNotExist:
@@ -250,12 +254,20 @@ def category(request, link):
 
 def search(request):
     try:
-        mentors = Mentor.objects.filter(
-            Q(specialty__contains=request.GET['title']) |
-            # Q(skill__name__in=request.GET['title']) |
-            Q(about__contains=request.GET['title']) |
-            Q(job__contains=request.GET['title'])
-        ).exclude(user=request.user)
+        if not request.user.is_anonymous():
+            mentors = Mentor.objects.filter(
+                Q(specialty__contains=request.GET['title']) |
+                # Q(skill__name__in=request.GET['title']) |
+                Q(about__contains=request.GET['title']) |
+                Q(job__contains=request.GET['title'])
+            ).exclude(user=request.user)
+        else:
+            mentors = Mentor.objects.filter(
+                Q(specialty__contains=request.GET['title']) |
+                # Q(skill__name__in=request.GET['title']) |
+                Q(about__contains=request.GET['title']) |
+                Q(job__contains=request.GET['title'])
+            )
     except KeyError:
         return redirect('/')
 
