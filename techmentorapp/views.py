@@ -85,9 +85,9 @@ def mentor_detail(request, id):
 def mentor_list(request):
     info = Infomation.objects.all().order_by('-id')[:4]
     if not request.user.is_anonymous():
-        mentors = Mentor.objects.all().exclude(user=request.user)
+        mentors = Mentor.objects.all().exclude(user=request.user).exclude(status=False)
     else:
-        mentors = Mentor.objects.all()
+        mentors = Mentor.objects.all().exclude(status=False)
     page = request.GET.get('page')
 
     paginator = Paginator(mentors, 10)
