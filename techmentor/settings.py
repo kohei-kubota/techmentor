@@ -217,9 +217,9 @@ PAGINATION_SETTINGS = {
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
 }
 
-MIDDLEWARE_CLASSES = [
-    'lib.middleware.RedirectCorrectHostname',
-]
+# MIDDLEWARE_CLASSES = [
+#     'lib.middleware.RedirectCorrectHostname',
+# ]
 
 CORRECT_HOST = 'www.techmentor.jp/'
 
