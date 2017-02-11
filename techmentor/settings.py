@@ -221,7 +221,7 @@ PAGINATION_SETTINGS = {
 #     'lib.middleware.RedirectCorrectHostname',
 # ]
 
-CORRECT_HOST = 'www.techmentor.jp/'
+# CORRECT_HOST = 'www.techmentor.jp/'
 
 
 
