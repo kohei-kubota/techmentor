@@ -9,7 +9,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=100)
     avatar = models.FileField(upload_to='avatar')
     photo = models.FileField(upload_to='profile', blank=True)
-    email = models.EmailField(max_length=255, unique=True, blank=True)
+    email = models.EmailField(max_length=255, unique=True)
 
     def __str__(self):
         return self.user.username
