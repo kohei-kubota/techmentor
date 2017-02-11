@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6144b229-b241-490a-8d57-155d2c119c40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/techmentorapp/templates/reserve_check.html" afterPath="$PROJECT_DIR$/techmentorapp/templates/reserve_check.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/techmentorapp/views.py" afterPath="$PROJECT_DIR$/techmentorapp/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,8 +102,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/techmentorapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="630" column="49" lean-forward="true" selection-start-line="630" selection-start-column="49" selection-end-line="630" selection-end-column="49" />
+            <state relative-caret-position="312">
+              <caret line="644" column="17" lean-forward="false" selection-start-line="644" selection-start-column="17" selection-end-line="644" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -773,8 +772,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/techmentorapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="630" column="49" lean-forward="true" selection-start-line="630" selection-start-column="49" selection-end-line="630" selection-end-column="49" />
+        <state relative-caret-position="312">
+          <caret line="644" column="17" lean-forward="false" selection-start-line="644" selection-start-column="17" selection-end-line="644" selection-end-column="17" />
           <folding />
         </state>
       </provider>
