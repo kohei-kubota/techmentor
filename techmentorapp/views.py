@@ -403,6 +403,7 @@ def my_schedule(request):
     week_list = []
     date_format = []
     time_list = []
+    show = []
     hour = 11
     minutes = "00"
     int_minutes = 0
@@ -446,7 +447,6 @@ def my_schedule(request):
         available = Available.objects.filter(mentor=mentor)
 
 
-        show = []
         boolean = True
         tbody_list = []
         for time in time_list:
@@ -502,12 +502,8 @@ def my_schedule(request):
             show.append(result)
             tbody_list.clear()
 
-
-
     except Mentor.DoesNotExist:
         return redirect('/')
-
-
 
     return render(request, 'my_schedule.html', {
         'week_list': week_list,
