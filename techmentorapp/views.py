@@ -371,6 +371,13 @@ def reserve(request, id):
                             <p class="btn btn-success schedule-btn disabled">×</p>
                             </td> 
                             ''')
+            else:
+                for week in date_format:
+                    tbody_list.append('''
+                    <td> 
+                    <p class="btn btn-success schedule-btn disabled">×</p>
+                    </td> 
+                    ''')
             close = '</tr>'
             result = thead
             for list in tbody_list:
@@ -403,7 +410,6 @@ def my_schedule(request):
     week_list = []
     date_format = []
     time_list = []
-    show = []
     hour = 11
     minutes = "00"
     int_minutes = 0
@@ -447,6 +453,7 @@ def my_schedule(request):
         available = Available.objects.filter(mentor=mentor)
 
 
+        show = []
         boolean = True
         tbody_list = []
         for time in time_list:
@@ -494,6 +501,19 @@ def my_schedule(request):
                             </a> 
                         </td> 
                         ''')
+            else:
+                for week in date_format:
+                    tbody_list.append('''
+                    <td> 
+                    <a href="/create_schedule/?date='''
+                    + week +
+                    '''&time='''
+                    + time +
+                    '''" class="btn btn-success schedule-btn">
+                    ×
+                    </a> 
+                    </td> 
+                    ''')
             close = '</tr>'
             result = thead
             for list in tbody_list:
