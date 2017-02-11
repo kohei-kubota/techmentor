@@ -624,6 +624,7 @@ def reserve_check(request, id, mentor):
 
             num = random_string(random.randint(12, 22))
             apper_url = "https://appear.in/" + num
+            contents =  request.POST["text"]
 
             from_addr = 'no-reply@coworkplace.jp'
             to_addrs = profile.email
@@ -638,13 +639,14 @@ def reserve_check(request, id, mentor):
             予約者： {0}
             メンター： {1}
             予約日時： {2}
-            URL： {3}
+            質問内容： {3}
+            URL： {4}
 
             ■■□―――――――――――――――――――□■■
             TechMentor運営事務局
             URL：http://techmentor.jp/
             ■■□―――――――――――――――――――□■■
-            '''.format(profile.name, mentor.name, avalilable.date + avalilable.time, apper_url)
+            '''.format(profile.name, mentor.name, avalilable.date + avalilable.time, contents, apper_url)
 
             send_mail(subject, body_text, from_addr, [to_addrs], fail_silently=False)
             send_mail(subject, body_text, from_addr, [bcc_addrs], fail_silently=False)
