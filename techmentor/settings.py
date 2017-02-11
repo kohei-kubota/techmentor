@@ -180,17 +180,18 @@ DATABASES['default'].update(db_from_env)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# AWS_ACCESS_KEY_ID = 'AKIAJJ2Z3YF4AJCVYF5A'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'techmentor-django-storage'
-# # collectstaic時にS3を使う
-# # MEDIAFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# # これをTrueにしたほうがファイル変更のチェックが速くなる
-# AWS_PRELOAD_METADATA = True
-#
-# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
-# ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+AWS_ACCESS_KEY_ID = 'AKIAJJ2Z3YF4AJCVYF5A'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'techmentor-django-storage'
+# collectstaic時にS3を使う
+MEDIAFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# これをTrueにしたほうがファイル変更のチェックが速くなる
+AWS_PRELOAD_METADATA = True
+
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+MEDIA_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
