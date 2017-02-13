@@ -51,7 +51,7 @@
                                 <img src="
                                 {% if user.profile %}
                                     {% if user.profile.photo %}
-                                        https://s3-ap-northeast-1.amazonaws.com/techmentor-django-storage/profile/{{ user.profile.photo }}
+                                        https://s3-ap-northeast-1.amazonaws.com/techmentor-django-storage/{{ user.profile.photo }}
                                     {% else %}
                                     	{{ user.profile.avatar }}
                                     {% endif %}
