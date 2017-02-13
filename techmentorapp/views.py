@@ -232,9 +232,9 @@ def category(request, link):
         skill = Skill.objects.get(name=categories[link])
         # mentors = Mentor.objects.filter(skill=skill).exclude(user=request.user)
         if not request.user.is_anonymous():
-            mentors = Mentor.objects.filter(skill=skill).exclude(user=request.user)
+            mentors = Mentor.objects.filter(skill=skill).exclude(user=request.user).exclude(status=False)
         else:
-            mentors = Mentor.objects.filter(skill=skill)
+            mentors = Mentor.objects.filter(skill=skill).exclude(status=False)
         info = Infomation.objects.all().order_by('-id')[:4]
         # mentors = Mentor.objects.all()
     except Skill.DoesNotExist:
@@ -260,14 +260,14 @@ def search(request):
                 # Q(skill__name__in=request.GET['title']) |
                 Q(about__contains=request.GET['title']) |
                 Q(job__contains=request.GET['title'])
-            ).exclude(user=request.user)
+            ).exclude(user=request.user).exclude(status=False)
         else:
             mentors = Mentor.objects.filter(
                 Q(specialty__contains=request.GET['title']) |
                 # Q(skill__name__in=request.GET['title']) |
                 Q(about__contains=request.GET['title']) |
                 Q(job__contains=request.GET['title'])
-            )
+            ).exclude(status=False)
     except KeyError:
         return redirect('/')
 
