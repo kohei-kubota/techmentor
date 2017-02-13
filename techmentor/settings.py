@@ -190,8 +190,8 @@ AWS_STORAGE_BUCKET_NAME = 'techmentor-django-storage'
 # # これをTrueにしたほうがファイル変更のチェックが速くなる
 AWS_PRELOAD_METADATA = True
 #
-STATIC_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# STATIC_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 MEDIA_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
@@ -244,7 +244,7 @@ PAGINATION_SETTINGS = {
 # MIDDLEWARE_CLASSES = [
 #     'lib.middleware.RedirectCorrectHostname',
 # ]
-#
+
 # CORRECT_HOST = 'www.techmentor.jp/'
 
 
