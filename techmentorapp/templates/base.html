@@ -89,8 +89,11 @@
 								<img src="
 								{% if user.profile %}
                                     {% if user.profile.photo %}
-                                        {% if user.profile.photo %}
-                                        https://s3-ap-northeast-1.amazonaws.com/techmentor-django-storage/profile/{{ user.profile.photo }}
+                                        {% ifnotequal user.profile.photo 'photo' %}
+                                            /media/{{ user.profile.photo }}
+                                        {% else %}
+                                            {{ user.profile.avatar }}
+                                        {% endifnotequal %}
                                     {% else %}
                                     	{{ user.profile.avatar }}
                                     {% endif %}
