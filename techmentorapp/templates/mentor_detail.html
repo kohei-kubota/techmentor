@@ -28,10 +28,10 @@
 					<div class="clearfix mentor-list">
 						<div class="flL left-column">
 							<p class="taC"><img src="
-							{% if mentor.user.profile.avatar %}
-								{{ mentor.user.profile.avatar }}
-							{% else %}
+							{% if mentor.user.profile.photo %}
 								https://s3-ap-northeast-1.amazonaws.com/techmentor-django-storage/{{ mentor.user.profile.photo }}
+							{% else %}
+								{{ mentor.user.profile.avatar }}
 							{% endif %}
 							" class="profile-img"></p>
 						</div>

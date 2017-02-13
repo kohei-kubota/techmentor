@@ -28,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mentor_list.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mentor_list.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="133" />
+            <state relative-caret-position="210">
+              <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -108,11 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mentor_detail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mentor_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="33" column="129" lean-forward="false" selection-start-line="33" selection-start-column="129" selection-end-line="33" selection-end-column="129" />
+            <state relative-caret-position="150">
+              <caret line="34" column="39" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="34" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -148,8 +148,8 @@
         <option value="$PROJECT_DIR$/techmentor/settings.py" />
         <option value="$PROJECT_DIR$/techmentorapp/templates/edit_profile.html" />
         <option value="$PROJECT_DIR$/techmentorapp/templates/base.html" />
-        <option value="$PROJECT_DIR$/techmentorapp/templates/mentor_list.html" />
         <option value="$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html" />
+        <option value="$PROJECT_DIR$/techmentorapp/templates/mentor_list.html" />
       </list>
     </option>
   </component>
@@ -778,18 +778,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_list.html">
+    <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="133" />
+        <state relative-caret-position="150">
+          <caret line="34" column="39" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="34" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html">
+    <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="33" column="129" lean-forward="false" selection-start-line="33" selection-start-column="129" selection-end-line="33" selection-end-column="129" />
+        <state relative-caret-position="210">
+          <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
           <folding />
         </state>
       </provider>
