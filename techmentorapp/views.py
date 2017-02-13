@@ -193,6 +193,7 @@ def add_skill(request):
             skill.save()
             # return redirect('/my_skill/')
             success = "スキルを追加しました"
+            skills = Skill_Detail.objects.filter(mentor=mentor)
             return render(request, 'my_skill.html', {"skills": skills, "error": error, "success": success})
         else:
             error = "Data is not valid"

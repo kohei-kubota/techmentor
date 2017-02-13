@@ -102,8 +102,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/techmentorapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="236" column="78" lean-forward="false" selection-start-line="236" selection-start-column="78" selection-end-line="236" selection-end-column="78" />
+            <state relative-caret-position="410">
+              <caret line="195" column="63" lean-forward="false" selection-start-line="195" selection-start-column="63" selection-end-line="195" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -772,8 +772,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/techmentorapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="236" column="78" lean-forward="false" selection-start-line="236" selection-start-column="78" selection-end-line="236" selection-end-column="78" />
+        <state relative-caret-position="410">
+          <caret line="195" column="63" lean-forward="false" selection-start-line="195" selection-start-column="63" selection-end-line="195" selection-end-column="63" />
           <folding />
         </state>
       </provider>
