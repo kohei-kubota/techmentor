@@ -17,3 +17,6 @@ whitenoise==3.2.2
 django-storages==1.5.2
 boto==2.45.0
 psycopg2==2.6.1
+django-pylibmc-sasl==0.2.4
+pylibmc==1.5.1
+Collectfast==0.5.2

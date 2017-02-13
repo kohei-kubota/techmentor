@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_sendgrid',
     'pure_pagination',  # for django-pure-pagination
     'storages',
+    'collectfast',
 ]
 
 MIDDLEWARE = [
@@ -194,6 +195,26 @@ STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 MEDIA_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+
+os.environ['MEMCACHE_SERVERS'] = os.environ.get('MEMCACHIER_SERVERS', '').replace(',', ';')
+os.environ['MEMCACHE_USERNAME'] = os.environ.get('MEMCACHIER_USERNAME', '')
+os.environ['MEMCACHE_PASSWORD'] = os.environ.get('MEMCACHIER_PASSWORD', '')
+
+CACHES = {
+     'default': {
+          'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
+          'TIMEOUT': 1000,
+          'BINARY': True,
+          'OPTIONS': {
+               'tcp_nodelay': True,
+               'remove_failed': 4
+          }
+     }
+}
+
+COLLECTFAST_CACHE = 'default'
+
 
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
