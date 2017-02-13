@@ -26,16 +26,12 @@
 						<div class="flL left-column">
 							<a href="/mentor/{{ mentor.id }}">
 								<p class="taC"><img src="
-								{% if user.profile %}
-                                    {% if user.profile.photo %}
-                                        {% if user.profile.photo %}
-                                        https://s3-ap-northeast-1.amazonaws.com/techmentor-django-storage/profile/{{ user.profile.photo }}
-                                    {% else %}
-                                    	{{ user.profile.avatar }}
-                                    {% endif %}
+								{% if mentor.user.profile.avatar %}
+									{{ mentor.user.profile.avatar }}
 								{% else %}
-								    {% static 'img/common/icon.png' %}
-								{% endif %}" class="profile-img"></p>
+									https://s3-ap-northeast-1.amazonaws.com/techmentor-django-storage/{{ mentor.user.profile.photo }}
+								{% endif %}
+								" class="profile-img"></p>
 							</a>
 							<p class="messageBtn">
 								{{ mentor.job }}
