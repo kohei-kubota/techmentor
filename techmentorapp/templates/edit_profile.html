@@ -51,11 +51,7 @@
                                 <img src="
                                 {% if user.profile %}
                                     {% if user.profile.photo %}
-                                        {% ifnotequal user.profile.photo 'photo' %}
-                                            /media/{{ user.profile.photo }}
-                                        {% else %}
-                                            {{ user.profile.avatar }}
-                                        {% endifnotequal %}
+                                        {{ user.profile.photo }}1
                                     {% else %}
                                     	{{ user.profile.avatar }}
                                     {% endif %}
