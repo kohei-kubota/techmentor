@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6144b229-b241-490a-8d57-155d2c119c40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/lib/middleware.py" afterPath="$PROJECT_DIR$/apps/lib/middleware.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/techmentor/settings.py" afterPath="$PROJECT_DIR$/techmentor/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/techmentorapp/templates/base.html" afterPath="$PROJECT_DIR$/techmentorapp/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/techmentorapp/templates/edit_profile.html" afterPath="$PROJECT_DIR$/techmentorapp/templates/edit_profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html" afterPath="$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/techmentorapp/templates/mentor_list.html" afterPath="$PROJECT_DIR$/techmentorapp/templates/mentor_list.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,14 +18,12 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/techmentor/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="184" column="35" lean-forward="true" selection-start-line="184" selection-start-column="35" selection-end-line="184" selection-end-column="35" />
-              <folding>
-                <marker date="1486973842000" expanded="true" signature="7134:7241" ph="..." />
-              </folding>
+            <state relative-caret-position="478">
+              <caret line="251" column="0" lean-forward="true" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -59,10 +52,8 @@
         <entry file="file://$PROJECT_DIR$/apps/lib/middleware.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="45" lean-forward="true" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
-              <folding>
-                <marker date="1486973852000" expanded="true" signature="0:753" ph="..." />
-              </folding>
+              <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,21 +98,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mentor_detail.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/techmentorapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+            <state relative-caret-position="-8313">
+              <caret line="190" column="30" lean-forward="false" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/techmentorapp/forms.py">
+      <file leaf-file-name="mentor_detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-1856">
+              <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -155,10 +146,10 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/techmentorapp/templates/edit_profile.html" />
         <option value="$PROJECT_DIR$/techmentorapp/templates/base.html" />
-        <option value="$PROJECT_DIR$/techmentor/settings.py" />
-        <option value="$PROJECT_DIR$/apps/lib/middleware.py" />
         <option value="$PROJECT_DIR$/techmentorapp/templates/mentor_list.html" />
         <option value="$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html" />
+        <option value="$PROJECT_DIR$/apps/lib/middleware.py" />
+        <option value="$PROJECT_DIR$/techmentor/settings.py" />
       </list>
     </option>
   </component>
@@ -641,14 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/techmentorapp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2640">
-          <caret line="190" column="30" lean-forward="false" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/runtime.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -747,26 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/lib/middleware.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="45" lean-forward="true" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
-          <folding>
-            <marker date="1486973852000" expanded="true" signature="0:753" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/techmentor/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="184" column="35" lean-forward="true" selection-start-line="184" selection-start-column="35" selection-end-line="184" selection-end-column="35" />
-          <folding>
-            <marker date="1486973842000" expanded="true" signature="7134:7241" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/techmentorapp/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -793,8 +756,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/techmentorapp/templates/mentor_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
+        <state relative-caret-position="-1856">
           <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/lib/middleware.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/techmentorapp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8313">
+          <caret line="190" column="30" lean-forward="false" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/techmentor/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="251" column="0" lean-forward="true" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
           <folding />
         </state>
       </provider>
