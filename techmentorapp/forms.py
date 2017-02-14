@@ -30,7 +30,7 @@ class SomeForm(forms.Form):
 class ReserveForm(ModelForm):
     class Meta:
         model = Reserve
-        fields = ['date_time']
+        fields = ['user', 'mentor', 'text', 'date_time']
 
 class ScheduleForm(ModelForm):
     class Meta:

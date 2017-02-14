@@ -43,10 +43,15 @@
 				</a>
 			</li>
 			<li>
-				<a href="" class="btn lg git">
-					<i class="fa fa-google-plus"></i><span>Googleでログイン／登録</span>
+				<a href="{% url 'social:begin' 'github' %}?next={{ request.path }}" class="btn lg git">
+					<i class="fa fa-github"></i><span>Githubでログイン／登録</span>
 				</a>
 			</li>
+			<!--<li>-->
+				<!--<a href="" class="btn lg git">-->
+					<!--<i class="fa fa-google-plus"></i><span>Googleでログイン／登録</span>-->
+				<!--</a>-->
+			<!--</li>-->
 			<!--<li>-->
 				<!--<div class="btn lg mail" data-modal="switch">-->
 					<!--<i class="fa fa-envelope"></i><span>メールアドレスでログイン</span>-->

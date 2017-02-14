@@ -9,7 +9,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=100)
     avatar = models.FileField(upload_to='avatar')
     photo = models.FileField(upload_to='profile', blank=True)
-    email = models.EmailField(max_length=255, unique=True)
+    email = models.EmailField(max_length=255)
 
     def __str__(self):
         return self.user.username
@@ -70,6 +70,7 @@ class Review(models.Model):
 class Reserve(models.Model):
     user = models.ForeignKey(User)
     mentor = models.ForeignKey(Mentor)
+    text = models.TextField(default="")
     date_time = models.DateTimeField(auto_now=False)
 
 

@@ -22,4 +22,11 @@ def save_avatar(backend, user, response, *args, **kwargs):
         # profile.email = '%s' % response.get('email')
         profile.avatar = response['profile_image_url_https']
 
+    if backend.name == 'github':
+        if not profile.name:
+            profile.name = '%s' % response.get('name')
+        if not profile.email:
+            profile.email = '%s' % response.get('email')
+        profile.avatar = response['avatar_url']
+
     profile.save()

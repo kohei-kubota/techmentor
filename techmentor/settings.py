@@ -139,6 +139,7 @@ AUTHENTICATION_BACKENDS = (
     # 'social.backends.email.EmailAuth',
     'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
+    'social.backends.github.GithubOAuth2',
 )
 
 # LOGIN_URL = '/login'
@@ -157,6 +158,10 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 
 SOCIAL_AUTH_TWITTER_KEY = '9BIXPsEGMy9LiTdPVaB6FPssa'
 SOCIAL_AUTH_TWITTER_SECRET = 'gdhVfvmBDx18McUL1BMO9SekjlSt3wAz2joGHM9dA1SqQL7FH3'
+
+SOCIAL_AUTH_GITHUB_KEY = '22634b799ef3b5ab112a'
+SOCIAL_AUTH_GITHUB_SECRET = '28c24c3e1c81c2c5602fdca7db3de1bd5730d926'
+SOCIAL_AUTH_GITHUB_SCOPE = ['email']
 
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',

@@ -135,7 +135,7 @@ select, button {
     box-shadow: none;
     color: #fff;
 }
-.social-login .btn.lg .fa-envelope, .social-login .btn.lg .fa-facebook, .social-login .btn.lg .fa-twitter {
+.social-login .btn.lg .fa-envelope, .social-login .btn.lg .fa-facebook, .social-login .btn.lg .fa-twitter, .social-login .btn.lg .fa-github {
     font-size: 22px;
 }
 .social-login .btn.lg i {
@@ -161,8 +161,8 @@ select, button {
     background-color: #70aecd;
 }
 .social-login .btn.git {
-    /* background-color: #5a7285; */
-    background-color: #bec5ca;
+    /* background-color: #bec5ca; */
+    background-color: #5a7285;
 }
 
 
